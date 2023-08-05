@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-size: 16px;
+        }
+
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .options {
+            margin-left: 20px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+            .option input[type="radio"] {
+                margin-right: 10px;
+            }
+
+        .submit-btn,
+        .reset-btn {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Center the button container */
+        .button-container{
+            text-align: center;
+        }
+
+            /* Increase button size */
+            .button-container input[value="Submit"] {
+                width: 150px; /* Adjust the width as needed */
+                height: 50px; /* Adjust the height as needed */
+                font-size: 20px; /* Adjust the font size as needed */
+                margin: 10px; /* Optional: Add some spacing between the buttons */
+                color:green;
+
+            }
+            .button-container input[value="Reset"] {
+                width: 150px; /* Adjust the width as needed */
+                height: 50px; /* Adjust the height as needed */
+                font-size: 20px; /* Adjust the font size as needed */
+                margin: 10px; /* Optional: Add some spacing between the buttons */
+                color:red;
+
+            }
+      
+
+
+
+        @media screen and (max-width: 768px) {
+            .question,
+            .option {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script>
+        function calculateScore() {
+            var radioElements = document.querySelectorAll('input[type="radio"]:checked');
+            var totalScore = 0;
+            for (var i = 0; i < radioElements.length; i++) {
+                totalScore += parseInt(radioElements[i].value);
+            }
+            alert('Your total score is: ' + totalScore);
+        }
+
+        function resetSelections() {
+            var radioElements = document.querySelectorAll('input[type="radio"]');
+            for (var i = 0; i < radioElements.length; i++) {
+                radioElements[i].checked = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Honewell</h1>
+    <br />
+    <form id="form1" runat="server">
+
+        <div class="question">
+            1.   Which of the following datatype is used to declare numbers?
+        </div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="boxA" value="0">
+                string
+            </label>
+            <label class="option">
+                <input type="radio" name="boxA" value="0">
+                char
+            </label>
+            <label class="option">
+                <input type="radio" name="boxA" value="1">
+                int
+            </label>
+            <label class="option">
+                <input type="radio" name="boxA" value="0">
+                bool
+            </label>
+        </div>
+
+        <div class="question">
+            2.   2 + 2
+        </div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="boxB" value="0">
+                six
+            </label>
+            <label class="option">
+                <input type="radio" name="boxB" value="1">
+                four
+            </label>
+            <label class="option">
+                <input type="radio" name="boxB" value="0">
+                two
+            </label>
+            <label class="option">
+                <input type="radio" name="boxB" value="0">
+                three
+            </label>
+        </div>
+        <div class="question">
+            3.   What Is the Captial Of Andhra Pradesh
+        </div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="boxC" value="0">
+                Amaravathi
+            </label>
+            <label class="option">
+                <input type="radio" name="boxC" value="0">
+                vizag
+            </label>
+            <label class="option">
+                <input type="radio" name="boxC" value="0">
+                kurnool
+            </label>
+            <label class="option">
+                <input type="radio" name="boxC" value="1">
+                All Of These
+            </label>
+        </div>
+
+        <div class="question">
+            4.How many consonants are there in the English alphabet?
+        </div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="boxD" value="0">
+                24
+            </label>
+            <label class="option">
+                <input type="radio" name="boxD" value="0">
+                22
+            </label>
+            <label class="option">
+                <input type="radio" name="boxD" value="1">
+                21
+            </label>
+            <label class="option">
+                <input type="radio" name="boxD" value="0">
+                20
+            </label>
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <div class="button-container">
+            <input type="button" value="Submit" onclick="calculateScore()" />
+            <input type="button" value="Reset" onclick="resetSelections()" />
+        </div>
+    
+        <script>
+            function calculateScore() {
+                var radioElements = document.querySelectorAll('input[type="radio"]:checked');
+                var totalScore = 0;
+                for (var i = 0; i < radioElements.length; i++) {
+                    totalScore += parseInt(radioElements[i].value);
+                }
+    
+                // Get the user's name from the URL parameters (passed from the index.html page)
+                const urlParams = new URLSearchParams(window.location.search);
+                const userName = urlParams.get('name');
+    
+                // Store the name and score in Local Storage
+                localStorage.setItem('userName', userName);
+                localStorage.setItem('score', totalScore);
+    
+                // Redirect to the result page
+                window.location.href = 'result.html';
+            }
+    
+            function resetSelections() {
+                var radioElements = document.querySelectorAll('input[type="radio"]');
+                for (var i = 0; i < radioElements.length; i++) {
+                    radioElements[i].checked = false;
+                }
+            }
+        </script>
+       
+
+    </form>
+</body>
+</html>

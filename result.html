@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quiz Result</title>
+    <style>
+        body {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Result</h1>
+    <p>
+        Thank you, <span id="resultName"></span>, for taking the quiz.<br>
+        Your total score is: <span id="resultScore"></span>.
+    </p>
+
+    <script>
+        // Retrieve the name and score from Local Storage
+        const userName = localStorage.getItem('userName');
+        const score = localStorage.getItem('score');
+
+        // Display the name and score in the result page
+        document.getElementById('resultName').textContent = userName;
+        document.getElementById('resultScore').textContent = score;
+
+        // Clear the Local Storage to reset the values
+        localStorage.clear();
+    </script>
+</body>
+</html>
